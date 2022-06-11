@@ -15,7 +15,6 @@ async function fetchTranslationPons(q) {
 }
 
 export default async function handler(req, res) {
-  console.log(req.query);
   const q = req.query.q;
   const response = await fetchTranslationPons(q);
 

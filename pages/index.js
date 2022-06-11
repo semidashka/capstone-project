@@ -3,8 +3,10 @@ import { useState } from 'react';
 
 import WordInput from '../components/WordInput';
 import WordCard from '../components/WordCard/WordCard';
+import NotFoundMessage from '../components/NotFoundMessage';
 
 export default function Home() {
+  const wordNotFound = useStore(state => state.wordNotFound);
   const ponsData = useStore(state => state.ponsData);
   const [showList, setShowList] = useState(false);
 
@@ -15,7 +17,7 @@ export default function Home() {
   return (
     <>
       <WordInput />
-      <WordCard />
+      {wordNotFound ? <NotFoundMessage /> : <WordCard />}
     </>
   );
 }

@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components';
 export const Card = styled.section`
   /* background-color: white; */
   max-width: 25rem;
-  margin: 1.5rem auto;
-  padding: 1rem;
+  margin: 0.5rem auto;
+  padding: 0.5rem;
 `;
 
 export const Button = styled.button`

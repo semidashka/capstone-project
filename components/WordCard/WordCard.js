@@ -7,7 +7,6 @@ import { Card, Button, Input, InputWrapper } from '../../components/styled';
 export default function WordCard() {
   const ponsData = useStore(state => state.ponsData);
   const clearPonsData = useStore(state => state.clearPonsData);
-  const saveNewWordDB = useStore(state => state.saveNewWordDB);
 
   return (
     <Card>

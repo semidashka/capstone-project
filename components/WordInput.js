@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import useStore from '../hooks/useStore';
 
-import styled, { css } from 'styled-components';
 import { Card, Button, Input, InputWrapper } from '../components/styled';
 
 export default function WordInput() {

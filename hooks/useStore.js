@@ -8,6 +8,7 @@ const useStore = create(set => {
       wordclass: null,
       translations: [],
     },
+    wordNotFound: false,
 
     clearPonsData: () => {
       set(() => ({
@@ -22,8 +23,13 @@ const useStore = create(set => {
     fetchPonsData: async word => {
       try {
         const response = await fetch(`/api/search-p?q=${word}`);
+        if (response.status === 500) {
+          set(() => ({ wordNotFound: true }));
+          return;
+        }
+
         const data = await response.json();
-        // console.log(data);
+        console.log(data);
         let newPonsData;
         data.map(entry =>
           entry.hits.map(hit =>
