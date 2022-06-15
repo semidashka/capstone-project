@@ -8,11 +8,6 @@ import NotFoundMessage from '../components/NotFoundMessage';
 export default function Home() {
   const wordNotFound = useStore(state => state.wordNotFound);
   const ponsData = useStore(state => state.ponsData);
-  const [showList, setShowList] = useState(false);
-
-  function showWordsList() {
-    setShowList(!showList);
-  }
 
   return (
     <>

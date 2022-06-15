@@ -10,9 +10,8 @@ export default function WordCard() {
 
   return (
     <Card>
-      <button onClick={clearPonsData}>Close</button>
       <HeadWord />
-      {ponsData.translations.map((translation, index) => (
+      {ponsData?.translations.map((translation, index) => (
         <TranslItem key={index} translation={translation} />
       ))}
     </Card>

@@ -1,44 +1,27 @@
 import { useState } from 'react';
+import styled from 'styled-components';
 import useStore from '../hooks/useStore';
 
 import { Card, Button, Input, InputWrapper } from '../components/styled';
 
 export default function WordInput() {
-  const [enteredWord, setEnteredWord] = useState('');
-
-  const { ponsData, fetchPonsData } = useStore(state => ({
-    ponsData: state.ponsData,
-    fetchPonsData: state.fetchPonsData,
-  }));
-
-  function wordChangeHandler(event) {
-    return setEnteredWord(event.target.value);
-  }
-
-  function fetchTranslationPons() {
-    fetch(`api/search-p?q=${enteredWord}`)
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        setPonsData(data);
-        console.log(data);
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  }
+  const enteredWord = useStore(state => state.enteredWord);
+  const storeEnteredWord = useStore(state => state.storeEnteredWord);
+  const ponsData = useStore(state => state.ponsData);
+  const fetchPonsData = useStore(state => state.fetchPonsData);
 
   return (
     <Card>
-      <label htmlFor="word">German word to translate:</label>
+      <LabelWrapper>
+        <label htmlFor="word"> De → Ru</label>
+      </LabelWrapper>
       <InputWrapper>
         <Input
           id="word"
           type="text"
-          placeholder="smth"
+          placeholder="Enter a German word here"
           value={enteredWord}
-          onChange={wordChangeHandler}
+          onChange={event => storeEnteredWord(event.target.value)}
         />
 
         <Button
@@ -52,3 +35,10 @@ export default function WordInput() {
     </Card>
   );
 }
+
+const LabelWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 6rem;
+  text-align: center;
+`;
