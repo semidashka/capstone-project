@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import useStore from '../hooks/useStore';
 
-import { Card, Button, Input, InputWrapper } from '../components/styled';
+import { Card, Button } from '../components/styled';
 
 export default function WordInput() {
   const enteredWord = useStore(state => state.enteredWord);
@@ -25,7 +25,7 @@ export default function WordInput() {
         />
 
         <Button
-          onClick={() => {
+          onClick={event => {
             fetchPonsData(enteredWord);
           }}
         >
@@ -41,4 +41,21 @@ const LabelWrapper = styled.div`
   flex-direction: column;
   max-width: 6rem;
   text-align: center;
+  margin-bottom: 0.5rem;
+
+  label {
+    font-style: italic;
+    color: hsl(154, 28%, 65%);
+  }
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  margin-top: 0.3rem;
+`;
+
+const Input = styled.input`
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
 `;

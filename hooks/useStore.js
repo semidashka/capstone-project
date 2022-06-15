@@ -1,6 +1,6 @@
 import create from 'zustand';
 
-const useStore = create(set => {
+const useStore = create((set, get) => {
   return {
     enteredWord: '',
     ponsData: {
@@ -12,6 +12,7 @@ const useStore = create(set => {
     wordNotFound: false,
     storeEnteredWord: word => set(() => ({ enteredWord: word })),
     fetchPonsData: async word => {
+      const ponsData = get().ponsData;
       try {
         const response = await fetch(`/api/search-p?q=${word}`);
         if (response.status === 500) {
@@ -34,7 +35,9 @@ const useStore = create(set => {
                     chosenTranslations: [],
                   };
                   set(() => ({ ponsData: newPonsData }));
-                } else {
+                  set(() => ({ enteredWord: '' }));
+                  return;
+                } else if (!ponsData) {
                   set(() => ({ wordNotFound: true }));
                 }
               })

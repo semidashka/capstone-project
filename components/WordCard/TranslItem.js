@@ -1,4 +1,7 @@
 import useStore from '../../hooks/useStore';
+import styled from 'styled-components';
+import { StyledWord } from '../styled';
+import styledComponents from 'styled-components';
 
 export default function TranslItem({ translation }) {
   const ponsData = useStore(state => state.ponsData);
@@ -6,7 +9,7 @@ export default function TranslItem({ translation }) {
 
   return (
     <>
-      <h4
+      <StyledTranslation
         dangerouslySetInnerHTML={{
           __html: translation,
         }}
@@ -14,3 +17,7 @@ export default function TranslItem({ translation }) {
     </>
   );
 }
+
+const StyledTranslation = styled(StyledWord)`
+  padding-left: 1rem;
+`;
