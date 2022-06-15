@@ -24,10 +24,7 @@ const useStore = create(set => {
           data.map(entry =>
             entry.hits.map(hit =>
               hit.roms.map(rom => {
-                if (
-                  rom.headword.toLowerCase() === word.toLowerCase() &&
-                  rom.arabs[0].translations
-                ) {
+                if (rom.headword.toLowerCase() === word.toLowerCase()) {
                   newPonsData = {
                     headword: rom.headword,
                     headwordPlus: rom.headword_full,
@@ -37,6 +34,8 @@ const useStore = create(set => {
                     chosenTranslations: [],
                   };
                   set(() => ({ ponsData: newPonsData }));
+                } else {
+                  set(() => ({ wordNotFound: true }));
                 }
               })
             )
