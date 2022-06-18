@@ -18,8 +18,11 @@ export default function WordInput() {
           id="word"
           type="text"
           placeholder="Enter a German word here"
-          value={enteredWord}
-          onChange={event => storeEnteredWord(event.target.value)}
+          // value={enteredWord}
+          onChange={event => {
+            const refinedWord = event.target.value.replace(/[^a-z]/gi, '');
+            storeEnteredWord(refinedWord);
+          }}
         />
 
         <Button
