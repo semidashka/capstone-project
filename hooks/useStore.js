@@ -8,8 +8,10 @@ const useStore = create((set, get) => {
       headwordPlus: '',
       wordclass: null,
       translations: [],
+      fetched: false,
     },
     wordNotFound: false,
+    wordOtherForm: false,
     storeEnteredWord: word => set(() => ({ enteredWord: word })),
     fetchPonsData: async word => {
       const ponsData = get().ponsData;
@@ -20,7 +22,7 @@ const useStore = create((set, get) => {
           return;
         } else {
           const data = await response.json();
-          // console.log(data);
+          console.log(data);
           let newPonsData;
           data.map(entry =>
             entry.hits.map(hit =>
@@ -33,20 +35,36 @@ const useStore = create((set, get) => {
                     id: rom.headword + '_' + rom.wordclass,
                     translations: [rom.arabs[0].translations[0].target],
                     chosenTranslations: [],
+                    fetched: true,
                   };
+
                   set(() => ({ ponsData: newPonsData }));
-                  set(() => ({ enteredWord: '' }));
+                  set(() => ({ enteredWord: '' })); //
                   return;
-                } else if (!ponsData) {
-                  set(() => ({ wordNotFound: true }));
                 }
               })
             )
           );
+          if (!newPonsData) {
+            const fetchPonsData = get().fetchPonsData;
+            fetchPonsData(data[0].hits[0].roms[0].headword);
+          }
         }
       } catch (err) {
         console.error(`Error: ${err}`);
       }
+    },
+    resetPonsdata: () => {
+      set(() => ({
+        ponsData: {
+          headword: '',
+          headwordPlus: '',
+          wordclass: null,
+          translations: [],
+          fetched: false,
+        },
+      })),
+        console.log(ponsData);
     },
   };
 });

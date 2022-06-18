@@ -6,7 +6,6 @@ export default function HeadWord() {
   return (
     <>
       {/* Outputs German word */}
-      {console.log(ponsData.headwordPlus)}
       <StyledWord
         dangerouslySetInnerHTML={{
           __html: ponsData.headwordPlus,

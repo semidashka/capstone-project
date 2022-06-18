@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import useStore from '../hooks/useStore';
 
@@ -7,7 +6,6 @@ import { Card, Button } from '../components/styled';
 export default function WordInput() {
   const enteredWord = useStore(state => state.enteredWord);
   const storeEnteredWord = useStore(state => state.storeEnteredWord);
-  const ponsData = useStore(state => state.ponsData);
   const fetchPonsData = useStore(state => state.fetchPonsData);
 
   return (
