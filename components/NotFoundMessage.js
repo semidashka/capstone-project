@@ -8,7 +8,7 @@ export default function NotFoundMessage() {
   return (
     <Card>
       <StyledP>
-        Sorry, I am a young app and don&apos;t know all the words yet.
+        Sorry, I am a young app and do not know all the words yet.
       </StyledP>
       <StyledP>Try another word please!</StyledP>
     </Card>
