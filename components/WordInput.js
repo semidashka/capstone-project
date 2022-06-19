@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import useStore from '../hooks/useStore';
 
 import { Card, Button } from '../components/styled';
@@ -50,6 +50,9 @@ const LabelWrapper = styled.div`
   label {
     font-style: italic;
     color: hsl(154, 28%, 65%);
+    ${props => css`
+      color: ${props.theme.buttonbg};
+    `}
   }
 `;
 
@@ -59,6 +62,12 @@ const InputWrapper = styled.div`
 `;
 
 const Input = styled.input`
+  ${props => css`
+    border: 1px solid ${props.theme.bordercolor};
+    background-color: ${props.theme.inputbg};
+    color: ${props.theme.inputtxt};
+    border-radius: ${props.theme.borderRadius} 0 0 ${props.theme.borderRadius};
+  `};
   flex: 1;
   padding: 0.5rem;
   font-size: 1rem;
