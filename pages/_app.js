@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/GlobalStyle';
 import { lightTheme, darkTheme } from '../styles/Themes';
 
-export default function myApp({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
   const [currentTheme, setCurrentTheme] = useState(lightTheme);
 
   const toggleTheme = () => {
