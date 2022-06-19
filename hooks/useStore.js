@@ -2,17 +2,16 @@ import create from 'zustand';
 
 const useStore = create((set, get) => {
   return {
-    enteredWord: '',
+    refinedWord: '',
     ponsData: {
       headword: '',
       headwordPlus: '',
       wordclass: null,
       translations: [],
-      fetched: false,
     },
     wordNotFound: false,
     wordOtherForm: false,
-    storeEnteredWord: word => set(() => ({ enteredWord: word })),
+    storeRefinedWord: word => set(() => ({ refinedWord: word })),
     fetchPonsData: async word => {
       const ponsData = get().ponsData;
       try {
@@ -35,11 +34,10 @@ const useStore = create((set, get) => {
                     id: rom.headword + '_' + rom.wordclass,
                     translations: [rom.arabs[0].translations[0].target],
                     chosenTranslations: [],
-                    fetched: true,
                   };
 
                   set(() => ({ ponsData: newPonsData }));
-                  set(() => ({ enteredWord: '' })); //
+                  set(() => ({ wordNotFound: false }));
                   return;
                 }
               })

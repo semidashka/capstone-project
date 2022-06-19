@@ -1,11 +1,13 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import useStore from '../hooks/useStore';
 
 import { Card, Button } from '../components/styled';
 
 export default function WordInput() {
-  const enteredWord = useStore(state => state.enteredWord);
-  const storeEnteredWord = useStore(state => state.storeEnteredWord);
+  const [enteredWord, setEnteredWord] = useState('');
+  const refinedWord = useStore(state => state.refinedWord);
+  const storeRefinedWord = useStore(state => state.storeRefinedWord);
   const fetchPonsData = useStore(state => state.fetchPonsData);
 
   return (
@@ -18,16 +20,17 @@ export default function WordInput() {
           id="word"
           type="text"
           placeholder="Enter a German word here"
-          // value={enteredWord}
+          value={enteredWord}
           onChange={event => {
+            setEnteredWord(event.target.value);
             const refinedWord = event.target.value.replace(/[^a-z]/gi, '');
-            storeEnteredWord(refinedWord);
+            storeRefinedWord(refinedWord);
           }}
         />
 
         <Button
           onClick={event => {
-            fetchPonsData(enteredWord);
+            fetchPonsData(refinedWord);
           }}
         >
           Translate
