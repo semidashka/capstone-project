@@ -6,7 +6,6 @@ import { Card } from '../../components/styled';
 
 export default function WordCard() {
   const ponsData = useStore(state => state.ponsData);
-  const clearPonsData = useStore(state => state.clearPonsData);
 
   return (
     <Card>

@@ -9,18 +9,23 @@ export default function WordInput() {
   const refinedWord = useStore(state => state.refinedWord);
   const storeRefinedWord = useStore(state => state.storeRefinedWord);
   const fetchPonsData = useStore(state => state.fetchPonsData);
+  const closeWordCard = useStore(state => state.closeWordCard);
 
   return (
     <Card>
       <LabelWrapper>
         <label htmlFor="word"> De → Ru</label>
       </LabelWrapper>
-      <InputWrapper>
+      <InputForm
+        onSubmit={event => {
+          event.preventDefault();
+          fetchPonsData(refinedWord);
+        }}
+      >
         <Input
           id="word"
           type="text"
           placeholder="Enter a German word here"
-          value={enteredWord}
           onChange={event => {
             setEnteredWord(event.target.value);
             const refinedWord = event.target.value.replace(/[^a-z]/gi, '');
@@ -28,14 +33,11 @@ export default function WordInput() {
           }}
         />
 
-        <Button
-          onClick={event => {
-            fetchPonsData(refinedWord);
-          }}
-        >
-          Translate
+        <Button type="submit">Translate</Button>
+        <Button type="reset" clear onClick={closeWordCard}>
+          Clear
         </Button>
-      </InputWrapper>
+      </InputForm>
     </Card>
   );
 }
@@ -56,16 +58,17 @@ const LabelWrapper = styled.div`
   }
 `;
 
-const InputWrapper = styled.div`
+const InputForm = styled.form`
   display: flex;
   margin-top: 0.3rem;
 `;
 
 const Input = styled.input`
   ${props => css`
-    border: 1px solid ${props.theme.bordercolor};
+    border: 1px solid ${props.theme.inputBorderColor};
     background-color: ${props.theme.inputbg};
     color: ${props.theme.inputtxt};
+    box-shadow: ${props.theme.boxShadow};
     border-radius: ${props.theme.borderRadius} 0 0 ${props.theme.borderRadius};
   `};
   flex: 1;
