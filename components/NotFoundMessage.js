@@ -12,7 +12,6 @@ export default function NotFoundMessage() {
             Sorry, I am a young app and do not know all the words yet.
           </StyledP>
           <StyledP>Try another word please!</StyledP>
-          <Button>OK</Button>
         </Card>
       )}
     </>
