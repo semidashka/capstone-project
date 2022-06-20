@@ -14,6 +14,14 @@ export default function TranslItem({ translation }) {
           __html: translation,
         }}
       />
+      <button
+        onClick={() => {
+          chooseTranslation(translation);
+        }}
+      >
+        Choose translation
+      </button>
+      {console.log(ponsData.chosenTranslations)}
     </>
   );
 }

@@ -67,6 +67,35 @@ const useStore = create((set, get) => {
         showWordNotFound: false,
       }));
     },
+    chooseTranslation: translation => {
+      set(state => {
+        return {
+          ponsData: {
+            ...state.ponsData,
+            chosenTranslations: [
+              ...state.ponsData.chosenTranslations,
+              translation,
+            ],
+          },
+        };
+      });
+    },
+    saveNewWordDB: async data => {
+      try {
+        const response = await fetch('/api/words-db', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        const message = await response.json();
+        console.log(message);
+      } catch (err) {
+        console.error(`Error: ${err}`);
+      }
+    },
   };
 });
 
