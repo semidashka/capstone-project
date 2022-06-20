@@ -33,7 +33,9 @@ export default function WordInput() {
         />
 
         <Button type="submit">Translate</Button>
-        <Button type="reset">Clear</Button>
+        <Button type="reset" clear>
+          Clear
+        </Button>
       </InputForm>
     </Card>
   );
@@ -62,9 +64,10 @@ const InputForm = styled.form`
 
 const Input = styled.input`
   ${props => css`
-    border: 1px solid ${props.theme.bordercolor};
+    border: 1px solid ${props.theme.inputBorderColor};
     background-color: ${props.theme.inputbg};
     color: ${props.theme.inputtxt};
+    box-shadow: ${props.theme.boxShadow};
     border-radius: ${props.theme.borderRadius} 0 0 ${props.theme.borderRadius};
   `};
   flex: 1;

@@ -8,13 +8,19 @@ export const Card = styled.section`
 
 export const Button = styled.button`
   ${props => css`
-    background-color: ${props.theme.buttonbg};
-    color: ${props.theme.buttontxt};
-    border-radius: 0 ${props.theme.borderRadius} ${props.theme.borderRadius} 0;
-    border: 1px solid ${props.theme.bordercolor};
+    /* background: ${props.theme.buttonBg}; */
+    border-radius: ${props =>
+      props.clear
+        ? props.theme.borderRadius
+        : `0 ${props.theme.borderRadius} ${props.theme.borderRadius} 0`};
+    border: 1px solid ${props.theme.buttonBg};
+    background: ${props =>
+      props.clear ? 'transparent' : props.theme.buttonBg};
+    color: ${props =>
+      props.clear ? props.theme.buttonBg : props.theme.buttonTxt};
+    box-shadow: ${props.theme.boxShadow};
   `};
   display: block;
-  border: 0;
   padding: 0.5rem;
   max-width: 6rem;
 `;
