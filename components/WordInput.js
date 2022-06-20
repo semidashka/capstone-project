@@ -9,6 +9,7 @@ export default function WordInput() {
   const refinedWord = useStore(state => state.refinedWord);
   const storeRefinedWord = useStore(state => state.storeRefinedWord);
   const fetchPonsData = useStore(state => state.fetchPonsData);
+  const closeWordCard = useStore(state => state.closeWordCard);
 
   return (
     <Card>
@@ -33,7 +34,7 @@ export default function WordInput() {
         />
 
         <Button type="submit">Translate</Button>
-        <Button type="reset" clear>
+        <Button type="reset" clear onClick={closeWordCard}>
           Clear
         </Button>
       </InputForm>

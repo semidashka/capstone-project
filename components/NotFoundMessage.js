@@ -3,16 +3,19 @@ import { Button, Card } from './styled';
 import useStore from '../hooks/useStore';
 
 export default function NotFoundMessage() {
-  const enteredWord = useStore(state => state.enteredWord);
-
+  const showWordNotFound = useStore(state => state.showWordNotFound);
   return (
-    <Card>
-      <StyledP>
-        Sorry, I am a young app and do not know all the words yet.
-      </StyledP>
-      <StyledP>Try another word please!</StyledP>
-      <Button>OK</Button>
-    </Card>
+    <>
+      {showWordNotFound && (
+        <Card>
+          <StyledP>
+            Sorry, I am a young app and do not know all the words yet.
+          </StyledP>
+          <StyledP>Try another word please!</StyledP>
+          <Button>OK</Button>
+        </Card>
+      )}
+    </>
   );
 }
 

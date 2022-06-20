@@ -11,13 +11,17 @@ const useStore = create((set, get) => {
     },
     wordNotFound: false,
     wordOtherForm: false,
+    showWordNotFound: true,
     storeRefinedWord: word => set(() => ({ refinedWord: word })),
     fetchPonsData: async word => {
       const ponsData = get().ponsData;
       try {
         const response = await fetch(`/api/search-p?q=${word}`);
         if (response.status === 500) {
-          set(() => ({ wordNotFound: true }));
+          set(() => ({
+            wordNotFound: true,
+            showWordNotFound: true,
+          }));
           return;
         } else {
           const data = await response.json();
@@ -52,17 +56,16 @@ const useStore = create((set, get) => {
         console.error(`Error: ${err}`);
       }
     },
-    resetPonsdata: () => {
+    closeWordCard: () => {
       set(() => ({
         ponsData: {
-          headword: '',
+          headword: 'bbb',
           headwordPlus: '',
           wordclass: null,
           translations: [],
-          fetched: false,
         },
-      })),
-        console.log(ponsData);
+        showWordNotFound: false,
+      }));
     },
   };
 });
