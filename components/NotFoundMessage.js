@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Card } from './styled';
+import { Button, Card } from './styled';
 import useStore from '../hooks/useStore';
 
 export default function NotFoundMessage() {
@@ -11,6 +11,7 @@ export default function NotFoundMessage() {
         Sorry, I am a young app and do not know all the words yet.
       </StyledP>
       <StyledP>Try another word please!</StyledP>
+      <Button>OK</Button>
     </Card>
   );
 }

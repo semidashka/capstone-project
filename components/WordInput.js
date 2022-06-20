@@ -15,12 +15,16 @@ export default function WordInput() {
       <LabelWrapper>
         <label htmlFor="word"> De → Ru</label>
       </LabelWrapper>
-      <InputWrapper>
+      <InputForm
+        onSubmit={event => {
+          event.preventDefault();
+          fetchPonsData(refinedWord);
+        }}
+      >
         <Input
           id="word"
           type="text"
           placeholder="Enter a German word here"
-          value={enteredWord}
           onChange={event => {
             setEnteredWord(event.target.value);
             const refinedWord = event.target.value.replace(/[^a-z]/gi, '');
@@ -28,14 +32,9 @@ export default function WordInput() {
           }}
         />
 
-        <Button
-          onClick={event => {
-            fetchPonsData(refinedWord);
-          }}
-        >
-          Translate
-        </Button>
-      </InputWrapper>
+        <Button type="submit">Translate</Button>
+        <Button type="reset">Clear</Button>
+      </InputForm>
     </Card>
   );
 }
@@ -56,7 +55,7 @@ const LabelWrapper = styled.div`
   }
 `;
 
-const InputWrapper = styled.div`
+const InputForm = styled.form`
   display: flex;
   margin-top: 0.3rem;
 `;
