@@ -28,7 +28,7 @@ export default function WordInput() {
           placeholder="Enter a German word"
           onChange={event => {
             setEnteredWord(event.target.value);
-            const refinedWord = event.target.value.replace(/[^a-z]/gi, '');
+            const refinedWord = event.target.value.replace(/\d/gi, '');
             storeRefinedWord(refinedWord);
           }}
         />
