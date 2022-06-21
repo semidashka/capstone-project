@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     background-color: var(--background-color);
-    font-family: 'Prompt';
+    font-family: 'Prompt', sans-serif;
   }
 
   a {

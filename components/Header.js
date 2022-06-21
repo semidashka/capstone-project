@@ -34,11 +34,8 @@ const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* position: fixed;
-  top: 0;
-  right: 0;
-  left: 0; */
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
+  width: 100%;
 
   h1 {
     padding: 0.1rem;

@@ -21,7 +21,7 @@ const StyledNavbar = styled.div`
     color: ${props.theme.dark};
     background-color: ${props.theme.bright};
   `}
-  padding: 0.5rem;
+  padding: 0.2rem;
   list-style: none;
   font-size: 20px;
   position: fixed;

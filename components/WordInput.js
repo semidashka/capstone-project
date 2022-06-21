@@ -25,6 +25,7 @@ export default function WordInput() {
         <Input
           id="word"
           type="text"
+          size="17"
           placeholder="Enter a German word"
           onChange={event => {
             setEnteredWord(event.target.value);
@@ -52,7 +53,7 @@ const LabelWrapper = styled.div`
   label {
     font-style: italic;
     ${props => css`
-      color: ${props.theme.buttonBg};
+      color: ${props.theme.dark};
     `}
   }
 `;
@@ -65,8 +66,8 @@ const InputForm = styled.form`
 const Input = styled.input`
   ${props => css`
     border: 1px solid ${props.theme.inputBorderColor};
-    background-color: ${props.theme.inputbg};
-    color: ${props.theme.inputtxt};
+    background-color: ${props.theme.inputBg};
+    color: ${props.theme.inputTxt};
     box-shadow: ${props.theme.boxShadow};
     border-radius: ${props.theme.borderRadius} 0 0 ${props.theme.borderRadius};
   `};
