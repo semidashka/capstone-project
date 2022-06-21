@@ -34,11 +34,11 @@ const SaveButton = styled.button`
   ${props => css`
     border-radius: ${props.theme.borderRadius};
 
-    border: 1px solid ${props.theme.buttonBg};
+    border: 1px solid ${props.theme.bright};
 
-    background: ${props.theme.button2Bg};
+    background: ${props.theme.bright};
 
-    color: ${props.theme.buttonTxt};
+    color: ${props.theme.dark};
 
     box-shadow: ${props.theme.boxShadow};
     max-width: 7rem;
