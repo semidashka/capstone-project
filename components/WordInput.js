@@ -25,7 +25,7 @@ export default function WordInput() {
         <Input
           id="word"
           type="text"
-          placeholder="Enter a German word here"
+          placeholder="Enter a German word"
           onChange={event => {
             setEnteredWord(event.target.value);
             const refinedWord = event.target.value.replace(/[^a-z]/gi, '');
@@ -47,13 +47,12 @@ const LabelWrapper = styled.div`
   flex-direction: column;
   max-width: 6rem;
   text-align: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
 
   label {
     font-style: italic;
-    color: hsl(154, 28%, 65%);
     ${props => css`
-      color: ${props.theme.buttonbg};
+      color: ${props.theme.buttonBg};
     `}
   }
 `;
