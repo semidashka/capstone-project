@@ -4,6 +4,9 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/GlobalStyle';
 import { lightTheme, darkTheme } from '../styles/Themes';
 
+import Header from '../components/Header';
+import Navbar from '../components/Navbar';
+
 export default function App({ Component, pageProps }) {
   const [currentTheme, setCurrentTheme] = useState(lightTheme);
 
@@ -17,7 +20,9 @@ export default function App({ Component, pageProps }) {
     <>
       <ThemeProvider theme={currentTheme}>
         <GlobalStyle />
+        <Header />
         <Component toggleTheme={toggleTheme} {...pageProps} />
+        <Navbar />
       </ThemeProvider>
     </>
   );

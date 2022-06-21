@@ -1,4 +1,5 @@
 import create from 'zustand';
+import transliterate from '@sindresorhus/transliterate';
 
 const useStore = create((set, get) => {
   return {
@@ -15,8 +16,10 @@ const useStore = create((set, get) => {
     storeRefinedWord: word => set(() => ({ refinedWord: word })),
     fetchPonsData: async word => {
       const ponsData = get().ponsData;
+      const transliterated = transliterate(word);
+      console.log(transliterated, word);
       try {
-        const response = await fetch(`/api/search-p?q=${word}`);
+        const response = await fetch(`/api/search-p?q=${transliterated}`);
         if (response.status === 500) {
           set(() => ({
             wordNotFound: true,
