@@ -13,8 +13,22 @@ const useStore = create((set, get) => {
     wordNotFound: false,
     wordOtherForm: false,
     showWordNotFound: true,
+    wordSaved: false,
     storeRefinedWord: word => set(() => ({ refinedWord: word })),
+    resetWord: () => {
+      set(() => ({
+        ponsData: {
+          headword: 'bbb',
+          headwordPlus: '',
+          wordclass: null,
+          translations: [],
+        },
+        showWordNotFound: false,
+        wordSaved: false,
+      }));
+    },
     fetchPonsData: async word => {
+      get().resetWord();
       const ponsData = get().ponsData;
       const transliterated = transliterate(word);
       console.log(transliterated, word);
@@ -43,8 +57,11 @@ const useStore = create((set, get) => {
                     chosenTranslations: [],
                   };
 
-                  set(() => ({ ponsData: newPonsData }));
-                  set(() => ({ wordNotFound: false }));
+                  set(() => ({
+                    ponsData: newPonsData,
+                    wordNotFound: false,
+                    wordSaved: false,
+                  }));
                   return;
                 }
               })
@@ -58,17 +75,6 @@ const useStore = create((set, get) => {
       } catch (err) {
         console.error(`Error: ${err}`);
       }
-    },
-    closeWordCard: () => {
-      set(() => ({
-        ponsData: {
-          headword: 'bbb',
-          headwordPlus: '',
-          wordclass: null,
-          translations: [],
-        },
-        showWordNotFound: false,
-      }));
     },
     chooseTranslation: translation => {
       set(state => {
@@ -95,6 +101,8 @@ const useStore = create((set, get) => {
 
         const message = await response.json();
         console.log(message);
+
+        set(() => ({ wordSaved: true }));
       } catch (err) {
         console.error(`Error: ${err}`);
       }
