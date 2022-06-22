@@ -26,15 +26,17 @@ export default function WordList({ kind }) {
     <Card>
       <StyledUl>
         {words.map(word => (
-          <StyledLi key={word.id}>
+          <StyledLi key={word._id}>
+            {/* <pre>{JSON.stringify(word, null, 4)}</pre> */}
             <StyledWord2
               dangerouslySetInnerHTML={{
                 __html: word.headwordPlus,
               }}
             />
             {/* <ul> */}
-            {word.translations.map((translation, i) => (
+            {word.translations.map((translation, index) => (
               <StyledTranslation2
+                key={index}
                 dangerouslySetInnerHTML={{
                   __html: translation,
                 }}

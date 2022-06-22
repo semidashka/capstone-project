@@ -7,7 +7,7 @@ export const lightTheme = {
 
   inputBorderColor: '#dadada',
   boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
-  inputBg: 'F1F1E8',
+  inputBg: '#F1F1E8',
   inputTxt: 'black',
   borderRadius: '7px',
 

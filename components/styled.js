@@ -3,28 +3,24 @@ import styled, { css } from 'styled-components';
 export const Card = styled.section`
   display: flex;
   flex-direction: column;
-  max-width: 25rem;
-  width: 90vw;
-  padding: 0.2rem 0.4rem;
+  padding: 0.2rem 1rem;
   margin: auto;
 `;
 
 export const Button = styled.button`
   ${props => css`
-    border-radius: ${props =>
-      props.clear
-        ? props.theme.borderRadius
-        : `0 ${props.theme.borderRadius} ${props.theme.borderRadius} 0`};
+    border-radius: ${props.clear
+      ? props.theme.borderRadius
+      : `0 ${props.theme.borderRadius} ${props.theme.borderRadius} 0`};
 
     border: 1px solid ${props.theme.dark};
 
-    background: ${props => (props.clear ? 'transparent' : props.theme.dark)};
+    background: ${props.clear ? 'transparent' : props.theme.dark};
 
-    color: ${props => (props.clear ? props.theme.dark : props.theme.light)};
+    color: ${props.clear ? props.theme.dark : props.theme.light};
 
     box-shadow: ${props.theme.boxShadow};
   `};
-  display: block;
   padding: 0.3rem;
   max-width: 6rem;
 `;
@@ -37,7 +33,7 @@ export const StyledWord = styled.h3`
 
   span {
     ${props => css`
-      color: ${props.theme.buttonBg};
+      color: ${props.theme.dark};
     `}
     font-size: 1rem;
     font-weight: 300;

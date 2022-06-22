@@ -15,7 +15,20 @@ const useStore = create((set, get) => {
     showWordNotFound: true,
     wordSaved: false,
     storeRefinedWord: word => set(() => ({ refinedWord: word })),
+    resetWord: () => {
+      set(() => ({
+        ponsData: {
+          headword: 'bbb',
+          headwordPlus: '',
+          wordclass: null,
+          translations: [],
+        },
+        showWordNotFound: false,
+        wordSaved: false,
+      }));
+    },
     fetchPonsData: async word => {
+      get().resetWord();
       const ponsData = get().ponsData;
       const transliterated = transliterate(word);
       console.log(transliterated, word);
@@ -62,18 +75,6 @@ const useStore = create((set, get) => {
       } catch (err) {
         console.error(`Error: ${err}`);
       }
-    },
-    closeWordCard: () => {
-      set(() => ({
-        ponsData: {
-          headword: 'bbb',
-          headwordPlus: '',
-          wordclass: null,
-          translations: [],
-        },
-        showWordNotFound: false,
-        wordSaved: false,
-      }));
     },
     chooseTranslation: translation => {
       set(state => {
