@@ -13,6 +13,7 @@ const useStore = create((set, get) => {
     wordNotFound: false,
     wordOtherForm: false,
     showWordNotFound: true,
+    wordSaved: false,
     storeRefinedWord: word => set(() => ({ refinedWord: word })),
     fetchPonsData: async word => {
       const ponsData = get().ponsData;
@@ -43,8 +44,11 @@ const useStore = create((set, get) => {
                     chosenTranslations: [],
                   };
 
-                  set(() => ({ ponsData: newPonsData }));
-                  set(() => ({ wordNotFound: false }));
+                  set(() => ({
+                    ponsData: newPonsData,
+                    wordNotFound: false,
+                    wordSaved: false,
+                  }));
                   return;
                 }
               })
@@ -68,6 +72,7 @@ const useStore = create((set, get) => {
           translations: [],
         },
         showWordNotFound: false,
+        wordSaved: false,
       }));
     },
     chooseTranslation: translation => {
@@ -95,6 +100,8 @@ const useStore = create((set, get) => {
 
         const message = await response.json();
         console.log(message);
+
+        set(() => ({ wordSaved: true }));
       } catch (err) {
         console.error(`Error: ${err}`);
       }

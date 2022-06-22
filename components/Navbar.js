@@ -7,7 +7,7 @@ export default function Navbar() {
       <Link passHref href="/">
         <a>Home</a>
       </Link>
-      <Link passHref href="/wishlist">
+      <Link passHref href="/my-words">
         <a>My Words</a>
       </Link>
     </StyledNavbar>
@@ -21,7 +21,7 @@ const StyledNavbar = styled.div`
     color: ${props.theme.dark};
     background-color: ${props.theme.bright};
   `}
-  padding: 0.2rem;
+  padding: 0.2rem 0 0.6rem;
   list-style: none;
   font-size: 20px;
   position: fixed;
