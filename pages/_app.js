@@ -32,5 +32,5 @@ export default function App({ Component, pageProps }) {
 }
 
 const Main = styled.main`
-  margin-top: 3.8rem;
+  margin-top: 3.3rem;
 `;

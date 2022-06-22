@@ -33,7 +33,7 @@ const Checkbox = styled.input.attrs({ type: 'checkbox' })`
   `}
 `;
 
-const StyledTranslation = styled.span`
+export const StyledTranslation = styled.span`
   font-size: 1.3rem;
   ${props => css`
     ${Checkbox}:checked + && {

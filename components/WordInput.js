@@ -25,7 +25,7 @@ export default function WordInput() {
         <Input
           id="word"
           type="text"
-          size="17"
+          // size="17"
           placeholder="Enter a German word"
           onChange={event => {
             setEnteredWord(event.target.value);
@@ -61,6 +61,7 @@ const LabelWrapper = styled.div`
 const InputForm = styled.form`
   display: flex;
   margin-top: 0.3rem;
+  justify-content: flex-start;
 `;
 
 const Input = styled.input`

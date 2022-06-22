@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -16,7 +16,9 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: var(--background-color);
+    ${props => css`
+      background-color: ${props.theme.light};
+    `}
     font-family: 'Prompt', sans-serif;
   }
 

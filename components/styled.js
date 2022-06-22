@@ -5,14 +5,12 @@ export const Card = styled.section`
   flex-direction: column;
   max-width: 25rem;
   width: 90vw;
-  margin: 0.2rem auto;
-  padding: 0.2rem 0.5rem;
+  padding: 0.2rem 0.4rem;
+  margin: auto;
 `;
 
 export const Button = styled.button`
   ${props => css`
-    /* background: ${props.theme.buttonBg}; */
-
     border-radius: ${props =>
       props.clear
         ? props.theme.borderRadius
@@ -25,12 +23,9 @@ export const Button = styled.button`
     color: ${props => (props.clear ? props.theme.dark : props.theme.light)};
 
     box-shadow: ${props.theme.boxShadow};
-
-    padding: ${props => (props.clear ? '0.1rem' : '1.5rem')};
   `};
-
   display: block;
-  padding: 0.4rem;
+  padding: 0.3rem;
   max-width: 6rem;
 `;
 
